@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { ProductsIndex } from "./ProductsIndex"
 import { ProductsNew } from "./ProductsNew";
 import { Modal } from "./Modal";
+import { ProductsShow } from "./ProductsShow";
 
 export function Content() {
   
@@ -43,7 +44,7 @@ export function Content() {
         <ProductsNew onCreateProduct={handleCreateProduct} />
         <ProductsIndex products={products} onShowProduct={handleShowProduct} />
         <Modal show={isProductsShowVisible} onClose={handleClose}>
-          <h1>Test</h1>
+          <ProductsShow product={currentProduct} />
         </Modal>
       </div>
     )

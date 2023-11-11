@@ -14,7 +14,6 @@ export function ProductsIndex(props) {
                 <p>{product.description}</p>
                 <p>{product.price}</p>
                 <img src={product.image_url} alt="" />
-                {/* add a button to show modal */}
                 <button onClick={() => props.onShowProduct(product)}>More Info</button>
             </div>
         ))}
