@@ -1,7 +1,11 @@
+// imports PhotoIndex
+import { PhotosIndex } from "./PhotosIndex"
+
 export function Content() {
     return (
-      <main>
-        <h1>Welcome to React!</h1>
-      </main>
+      <div>
+        {/* makes PhotosIndex a child component of content */}
+        <PhotosIndex />
+      </div>
     )
   }
