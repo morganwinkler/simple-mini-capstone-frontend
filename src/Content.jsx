@@ -2,12 +2,13 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { ProductsIndex } from "./ProductsIndex"
 import { ProductsNew } from "./ProductsNew";
-// imports the Modal
 import { Modal } from "./Modal";
 
 export function Content() {
   
   const [products, setProducts] = useState([]);
+  const [isProductsShowVisible, setIsProductsShowVisible] = useState(false);
+  const [currentProduct, setCurrentProduct] = useState({});
 
   const handleIndexProducts = () => {
     console.log("handleIndexProducts");
@@ -24,13 +25,24 @@ export function Content() {
       setProducts([...products, response.data])}
     )};
 
+  const handleShowProduct = (product) => {
+    console.log(currentProduct, product)
+    setIsProductsShowVisible(true);
+    setCurrentProduct(product);
+  };
+
+  const handleClose = () => {
+    console.log("handleClose");
+    setIsProductsShowVisible(false);
+  };
+
   useEffect(handleIndexProducts, []);
 
     return (
       <div>
         <ProductsNew onCreateProduct={handleCreateProduct} />
-        <ProductsIndex products={products}/>
-        <Modal show={true}>
+        <ProductsIndex products={products} onShowProduct={handleShowProduct} />
+        <Modal show={isProductsShowVisible} onClose={handleClose}>
           <h1>Test</h1>
         </Modal>
       </div>
