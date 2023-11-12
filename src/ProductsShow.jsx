@@ -1,11 +1,18 @@
 /* eslint-disable react/prop-types */
 export function ProductsShow(props) {
+
+  const handleSubmit = (event) => {
+         event.preventDefault();
+         const params = new FormData(event.target);
+         props.onUpdateProduct(props.product.id, params, () => event.target.reset());
+       }; 
+
     return (
       <div>
         <h1>Product Information</h1>
         <p>Name: {props.product.name}</p>
         <p>Description: {props.product.description}</p>
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <h1>Would you like to update {props.product.name}?</h1>
           <div>
             Name: <input defaultValue={props.product.name} name="name" type="text" />
