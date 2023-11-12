@@ -6,6 +6,9 @@ export function ProductsShow(props) {
          const params = new FormData(event.target);
          props.onUpdateProduct(props.product.id, params, () => event.target.reset());
        }; 
+  const handleClick = () => {
+        props.onDestroyProduct(props.product);
+       };
 
     return (
       <div>
@@ -28,6 +31,7 @@ export function ProductsShow(props) {
           </div>
           <button type="submit"> Update Item</button>
         </form>
+        <button onClick={handleClick}>Delete Item</button>
       </div>
     );
   }
